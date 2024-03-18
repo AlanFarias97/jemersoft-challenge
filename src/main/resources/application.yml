@@ -7,9 +7,9 @@ springdoc:
 spring:
   ### datasource ###
   datasource:
-    url: jdbc:postgresql://localhost:5432/challenge-local
-    password: postgres
-    username: postgres
+    url: "${DATABASE_URL}"
+    password: "${PGPASSWORD}"
+    username: "${PGUSER}"
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -21,10 +21,10 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
   rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+    host: "${RABBITMQ_URL}"
+    port: "${RAILWAY_TCP_PROXY_PORT}"
+    username: "${RABBITMQ_DEFAULT_USER}"
+    password: "${RABBITMQ_DEFAULT_PASS}"
 
 
 
