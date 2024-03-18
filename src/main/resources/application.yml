@@ -8,8 +8,8 @@ spring:
   ### datasource ###
   datasource:
     url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
-    password: ${PGPASSWORD}
     username: ${PGUSER}
+    password: ${PGPASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
