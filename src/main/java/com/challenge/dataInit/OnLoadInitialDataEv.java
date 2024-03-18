@@ -66,6 +66,7 @@ public class OnLoadInitialDataEv extends EventGeneric<OnLoadInitialDataEv.Data> 
         String urlFinal =  urlBaseApi+"/pokemon?offset0&limit=1302";
         HttpEntity request = new HttpEntity(urlFinal);
         log.info("Calling api pokeapi pokemon services with url: " + urlFinal);
+        log.info("");
         long startTime = System.currentTimeMillis();
         ResponseEntity<PokemonApiExternalResponse> response = restTemplate.exchange(urlFinal, HttpMethod.GET, request,PokemonApiExternalResponse.class );
         long timeTaken = System.currentTimeMillis() - startTime;
