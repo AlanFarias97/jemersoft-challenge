@@ -55,6 +55,7 @@ public class PokemonResponse {
                 .weight(p.getWeight())
                 .abilities(abilitiesList)
                 .movements(movementsList)
+                .description(p.getDescription())
                 .build();
     }
 }
