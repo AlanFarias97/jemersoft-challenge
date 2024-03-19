@@ -21,10 +21,11 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
   rabbitmq:
-    host: roundhouse.proxy.rlwy.net
-    port: 55141
+    host: ${PROXY_HOST}
+    port: ${PROXY_PORT}
     username: ${RABBITMQ_DEFAULT_USER}
     password: ${RABBITMQ_DEFAULT_PASS}
+    addresses: ${RABBITMQ_URL}
 
 
 
