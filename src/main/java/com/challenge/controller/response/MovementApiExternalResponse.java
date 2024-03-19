@@ -1,6 +1,5 @@
 package com.challenge.controller.response;
 
-import com.challenge.persistence.model.Ability;
 import com.challenge.persistence.model.Movement;
 import com.challenge.persistence.model.Pokemon;
 import lombok.*;

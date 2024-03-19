@@ -5,7 +5,6 @@ import com.challenge.persistence.model.Movement;
 import com.challenge.persistence.model.Pokemon;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter

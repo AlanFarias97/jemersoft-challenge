@@ -3,7 +3,6 @@ package com.challenge.controller.response;
 import com.challenge.persistence.model.Pokemon;
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
