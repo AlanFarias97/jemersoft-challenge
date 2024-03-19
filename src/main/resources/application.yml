@@ -8,6 +8,8 @@ springdoc:
   swagger-ui:
     enabled: true
     path: /swagger-ui.html
+    csrf:
+      enabled: false
 spring:
   ### datasource ###
   datasource:
