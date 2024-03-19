@@ -6,8 +6,11 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EntityScan(basePackages = "com.challenge.persistence.model")
-@ComponentScan(basePackages = "com.challenge.config")
+@EntityScan(basePackages = {"com.challenge.persistence.model","com.challenge.persistence.repository"
+, "com.challenge"})
+@ComponentScan(basePackages = {"com.challenge.config", "com.challenge.config.event",
+		"com.challenge.controller",
+		"com.challenge.core"})
 public class ChallengeApplication {
 
 	public static void main(String[] args) {
