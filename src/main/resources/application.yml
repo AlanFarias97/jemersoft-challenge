@@ -23,8 +23,8 @@ spring:
   rabbitmq:
     host: ${PROXY_HOST}
     port: ${PROXY_PORT}
-    username: ${RABBITMQ_DEFAULT_USER}
-    password: ${RABBITMQ_DEFAULT_PASS}
+    username: guest
+    password: guest
 
 
 
