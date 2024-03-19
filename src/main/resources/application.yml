@@ -25,7 +25,7 @@ spring:
     port: ${PROXY_PORT}
     username: ${RABBITMQ_DEFAULT_USER}
     password: ${RABBITMQ_DEFAULT_PASS}
-    add: ${RABBITMQ_URL},${RABBITMQ_PRIVATE_URL}
+    addresses: ${RABBITMQ_URL},${RABBITMQ_PRIVATE_URL}
 
 
 
