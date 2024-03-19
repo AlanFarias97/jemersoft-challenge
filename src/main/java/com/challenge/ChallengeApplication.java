@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EntityScan(basePackages = {"com.challenge.persistence.model","com.challenge.persistence.repository"
-, "com.challenge"})
+, "com.challenge.config"})
 @ComponentScan(basePackages = {"com.challenge.config", "com.challenge.config.event",
 		"com.challenge.controller",
 		"com.challenge.core"})
