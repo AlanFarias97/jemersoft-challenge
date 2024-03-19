@@ -18,6 +18,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/challenge/v1/pokemon")
 public class PokemonController {
 
