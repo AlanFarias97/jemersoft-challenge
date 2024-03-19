@@ -1,4 +1,8 @@
 springdoc:
+  springfox:
+    documentation:
+      swagger-ui:
+        server-url: https://jemersoft-challenge-production.up.railway.app
   api-docs:
     enabled: true
   swagger-ui:
