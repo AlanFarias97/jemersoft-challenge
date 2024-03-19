@@ -21,8 +21,8 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
   rabbitmq:
-    host: rabbitmq.railway.internal
-    port: 5672
+    host: roundhouse.proxy.rlwy.net
+    port: 55141
     username: ${RABBITMQ_DEFAULT_USER}
     password: ${RABBITMQ_DEFAULT_PASS}
 
