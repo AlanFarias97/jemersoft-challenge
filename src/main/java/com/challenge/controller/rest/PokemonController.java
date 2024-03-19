@@ -29,7 +29,7 @@ public class PokemonController {
         this.pokemonService = pokemonService;
         this.loadInitialDataService = loadInitialDataService;
     }
-
+    @CrossOrigin
     @GetMapping(path = "/list")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Map<String, Object>> getPokemonList(
@@ -42,13 +42,12 @@ public class PokemonController {
         return ResponseEntity.ok(pokemonService.getPokemonList(pokemonRequest, paging));
     }
 
-
-
+    @CrossOrigin
     @GetMapping(path = "/find/{pokemonId}")
     public ResponseEntity<PokemonResponse> findById(@NotNull @PathVariable("pokemonId") Long pokemonId) {
         return ResponseEntity.ok(pokemonService.findPokemonById(pokemonId));
     }
-
+    @CrossOrigin
     @PostMapping(path = "/dataload")
     public ResponseEntity<String> loadDataInitial() throws Exception {
         loadInitialDataService.loadDataInital();
