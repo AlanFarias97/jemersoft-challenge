@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 , "com.challenge.config"})
 @ComponentScan(basePackages = {"com.challenge.config", "com.challenge.config.event",
 		"com.challenge.controller",
-		"com.challenge.core"})
+		"com.challenge.core","com.challenge.persistence.model","com.challenge.persistence.repository"})
 public class ChallengeApplication {
 
 	public static void main(String[] args) {

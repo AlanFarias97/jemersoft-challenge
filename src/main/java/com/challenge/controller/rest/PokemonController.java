@@ -1,13 +1,10 @@
 package com.challenge.controller.rest;
 
-import com.challenge.config.event.EventFactory;
 import com.challenge.controller.response.PokemonResponse;
 import com.challenge.core.PokemonService;
-import com.challenge.core.event.EventType;
-import com.challenge.dataInit.OnLoadInitialDataEv;
+import com.challenge.core.LoadInitialDataService;
 import com.challenge.persistence.criteria.PokemonSpecification;
 import com.challenge.util.JsonUtils;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.data.domain.PageRequest;
@@ -17,17 +14,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.Map;
-import java.util.UUID;
 
 @Slf4j
-@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/challenge/v1/pokemon")
 public class PokemonController {
 
     private final PokemonService pokemonService;
+    private final LoadInitialDataService loadInitialDataService;
+
+    public PokemonController(PokemonService pokemonService, LoadInitialDataService loadInitialDataService) {
+        this.pokemonService = pokemonService;
+        this.loadInitialDataService = loadInitialDataService;
+    }
 
     @GetMapping(path = "/list")
     @ResponseStatus(HttpStatus.OK)
@@ -49,11 +49,8 @@ public class PokemonController {
     }
 
     @PostMapping(path = "/dataload")
-    public ResponseEntity<String> loadDataInitial(){
-        EventFactory.getEvent(EventType.LOAD_INITIAL_DATA).publishEvent(
-                UUID.randomUUID().toString(),
-                new OnLoadInitialDataEv.Data(LocalDateTime.now())
-        );
+    public ResponseEntity<String> loadDataInitial() throws Exception {
+        loadInitialDataService.loadDataInital();
         return ResponseEntity.ok("Loading initial information!!");
     }
 

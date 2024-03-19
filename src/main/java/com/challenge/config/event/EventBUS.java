@@ -11,13 +11,14 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
-@Component
+@Service
 public class EventBUS implements ApplicationListener<ContextClosedEvent> {
     private  final List<EventGeneric<EventData>> eventListen = new ArrayList<>();
 

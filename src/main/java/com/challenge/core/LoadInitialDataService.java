@@ -1,11 +1,6 @@
-package com.challenge.dataInit;
+package com.challenge.core;
 
-import com.challenge.config.event.EventBUS;
-import com.challenge.config.event.EventData;
-import com.challenge.config.event.EventGeneric;
-import com.challenge.config.event.IEventType;
 import com.challenge.controller.response.PokemonApiExternalResponse;
-import com.challenge.core.event.EventType;
 import com.challenge.exception.BusinessException;
 import com.challenge.exception.MessageCode;
 import com.challenge.persistence.model.Ability;
@@ -13,26 +8,23 @@ import com.challenge.persistence.model.Movement;
 import com.challenge.persistence.repository.AbilityRepository;
 import com.challenge.persistence.repository.MovementRepository;
 import com.challenge.persistence.repository.PokemonRepository;
-import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Slf4j
-@Component
-public class OnLoadInitialDataEv extends EventGeneric<OnLoadInitialDataEv.Data> {
+@Service
+public class LoadInitialDataService {
 
     @Value(" ${url-pokeapi}")
     private String urlBasePokeApi;
@@ -42,8 +34,7 @@ public class OnLoadInitialDataEv extends EventGeneric<OnLoadInitialDataEv.Data> 
     private final MovementRepository movementRepository;
     private final RestTemplate restTemplate;
 
-    public OnLoadInitialDataEv(EventBUS eventBUS, PokemonRepository pokemonRepository, AbilityRepository abilityRepository, MovementRepository movementRepository, RestTemplate restTemplate) {
-        super(eventBUS);
+    public LoadInitialDataService( PokemonRepository pokemonRepository, AbilityRepository abilityRepository, MovementRepository movementRepository, RestTemplate restTemplate) {
         this.pokemonRepository = pokemonRepository;
         this.abilityRepository = abilityRepository;
         this.movementRepository = movementRepository;
@@ -51,8 +42,7 @@ public class OnLoadInitialDataEv extends EventGeneric<OnLoadInitialDataEv.Data> 
     }
 
 
-    @Override
-    public void onEvent(Data eventData) throws Exception {
+    public void loadDataInital() throws Exception {
             try {
                 loadPokemonTable();
                 searchPokemonMovementAndAbilities();
@@ -170,18 +160,4 @@ public class OnLoadInitialDataEv extends EventGeneric<OnLoadInitialDataEv.Data> 
         return response.getBody().getFlavor_text_entries().stream().filter(d -> d.getLanguage().getName().equals("es")).findFirst().get().getFlavor_text();
     }
 
-
-    @Override
-    public IEventType eventListen() {
-        return EventType.LOAD_INITIAL_DATA;
-    }
-
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Builder
-    public static class Data extends EventData {
-            private LocalDateTime initData;
-    }
 }
